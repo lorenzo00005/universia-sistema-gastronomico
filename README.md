@@ -28,8 +28,11 @@ Floor and tables · waiter ordering · kitchen/bar tickets by station · stock w
 ## Repository layout
 ```
 README.md
+demo/
+  mvp-restaurante.html                         # Interactive MVP demo: 45 tables, 10 waiters, 8 brand themes
 docs/
   phase1-infrastructure-and-configuration.md   # Phase 1 summary (SOPs, tests, permissions, audit design)
+  fase1-roadmap-y-configuracion.md             # Full Phase 1 guide in Spanish (step-by-step configuration)
   nfc-green-mug.md                             # eWallet + Odoo POS integration (50-card pilot)
   nfc-business.md                              # B2B NFC card business and clients
 infra/
@@ -38,6 +41,9 @@ infra/
   config/odoo.conf
   scripts/backup_prod.ps1
 ```
+
+## Interactive MVP demo
+`demo/mvp-restaurante.html` is a self-contained prototype (open it in a browser, no install) of the operating flow: floor plan with 45 tables and 10 waiters, ordering, kitchen/bar tickets, cash desk with mixed payments and shift closing, stock with recipes, anti-theft audit log, and role-based access. The **Marca** tab switches between 8 brand themes (black and white, blue and white, and more) or custom colors, logo and typography. It runs on sample data in memory and is not the Odoo system; demo PINs are shown on the login screen.
 
 ## Quick start (Windows 11)
 1. Copy `infra/` to `C:\greenmug-prod\`.
