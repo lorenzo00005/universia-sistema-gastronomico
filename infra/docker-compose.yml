@@ -1,4 +1,4 @@
-name: greenmug-prod
+name: universia-nfc-prod
 
 services:
   db:
