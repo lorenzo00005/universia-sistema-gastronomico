@@ -1,4 +1,4 @@
-name: universia-nfc-prod
+name: universia-prod
 
 services:
   db:

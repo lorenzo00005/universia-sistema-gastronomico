@@ -1,12 +1,12 @@
 #Requires -Version 5.1
 <#
 .SYNOPSIS
-    Backup of the universia_nfc_prod database (PostgreSQL + filestore) with rotation and optional off-site copy.
+    Backup of the universia_prod database (PostgreSQL + filestore) with rotation and optional off-site copy.
 .NOTES
     Ruta : <project>\scripts\backup_prod.ps1
     Usage: powershell -NoProfile -ExecutionPolicy Bypass -File .\scripts\backup_prod.ps1
     Config: reads <project>\.env (ODOO_DB_NAME, POSTGRES_USER, BACKUP_DIR, BACKUP_KEEP_DAYS, BACKUP_COPY_DIR).
-    Output: <BACKUP_DIR>\universia_nfc_prod_AAAAMMDD_HHMMSS.zip (db.dump + filestore) and <BACKUP_DIR>\backup.log
+    Output: <BACKUP_DIR>\universia_prod_AAAAMMDD_HHMMSS.zip (db.dump + filestore) and <BACKUP_DIR>\backup.log
 #>
 [CmdletBinding()]
 param()
@@ -81,7 +81,7 @@ function Remove-OldBackups {
         [Parameter(Mandatory)][int]$Days
     )
     $limit = (Get-Date).AddDays(-$Days)
-    Get-ChildItem -LiteralPath $Folder -Filter 'universia_nfc_prod_*.zip' -File |
+    Get-ChildItem -LiteralPath $Folder -Filter 'universia_prod_*.zip' -File |
         Where-Object { $_.LastWriteTime -lt $limit } |
         ForEach-Object {
             Remove-Item -LiteralPath $_.FullName -Force
@@ -90,7 +90,7 @@ function Remove-OldBackups {
 }
 
 $stamp = Get-Date -Format 'yyyyMMdd_HHmmss'
-$work = Join-Path $BackupDir "universia_nfc_prod_$stamp"
+$work = Join-Path $BackupDir "universia_prod_$stamp"
 $zip = "$work.zip"
 $exitCode = 0
 
